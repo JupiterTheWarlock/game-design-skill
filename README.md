@@ -1,14 +1,29 @@
 # Game Design Skill
 
-A one-plugin Marketplace for Claude Code and Codex. The plugin exposes one
-canonical `game-design-skill`; both products load the same `SKILL.md` and the
-same source-grounded references.
+A one-plugin Marketplace for Claude Code and Codex. It exposes one canonical
+`game-design-skill`; both products load the same `SKILL.md` and the same
+source-grounded references.
 
-The game-design material is primarily derived from
+## What this is
+
+We distilled the reusable game-design methodology from
 [`Donchitos/Claude-Code-Game-Studios`](https://github.com/Donchitos/Claude-Code-Game-Studios)
-under its MIT license. Vendored upstream files are pinned, hashed, and mapped
-in `provenance/upstream-lock.json`. Platform-specific orchestration in those
-files is source material, not an instruction to emulate Claude Code internals.
+(CCGS) into a focused, dual-compatible skill. CCGS provides the primary game
+design roles, workflows, review procedures, and document templates; this
+repository extracts those methods from the larger multi-agent studio and
+packages them as one practical skill for both Claude Code and Codex.
+
+The extraction favors the original CCGS wording and structure. Selected
+upstream files are preserved verbatim under the MIT license, pinned to a fixed
+commit, hashed, and mapped in `provenance/upstream-lock.json`. The canonical
+skill adds only the routing, source-safety rules, and compatibility layer
+needed to use the methodology without CCGS's Claude-specific studio
+orchestration.
+
+The skill supports concept and pillar development, system decomposition,
+system GDD authoring, balance and economy analysis, prototypes and playtests,
+UX and accessibility work, scope control, design-change propagation, and
+single- or cross-document design review.
 
 ## Repository contract
 
@@ -21,11 +36,29 @@ files is source material, not an instruction to emulate Claude Code internals.
 - Cite authoritative supplements instead of inventing theory, thresholds, or
   platform behavior.
 
+## Install
+
+### Claude Code
+
+```powershell
+claude plugin marketplace add https://github.com/JupiterTheWarlock/game-design-skill
+claude plugin install game-design-skill@game-design-skill --scope user
+claude plugin list
+```
+
+### Codex
+
+```powershell
+codex plugin marketplace add https://github.com/JupiterTheWarlock/game-design-skill
+codex plugin add game-design-skill@game-design-skill
+codex plugin list --marketplace game-design-skill
+```
+
 ## Install from a local clone
 
 Replace `<repo>` with the absolute path to this checkout.
 
-### Claude Code
+### Claude Code — local checkout
 
 ```powershell
 claude plugin marketplace add "<repo>" --scope local
@@ -33,7 +66,7 @@ claude plugin install game-design-skill@game-design-skill --scope local
 claude plugin list
 ```
 
-### Codex
+### Codex — local checkout
 
 ```powershell
 codex plugin marketplace add "<repo>"
