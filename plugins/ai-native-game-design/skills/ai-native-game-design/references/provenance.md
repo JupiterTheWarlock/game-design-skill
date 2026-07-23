@@ -17,15 +17,18 @@ user is explicitly revising that rule.
 
 ## Repository-authored synthesis
 
-`references/ai-native-game-design.md` is original repository guidance
-synthesized from the Tencent Game Institute panel listed under Practitioner
-evidence in `authoritative-sources.md`, combined with repository-authored
-source-safety, prototyping, playtesting, UX, and system-analysis methods.
+`references/ai-native-game-design.md` and `references/ai-npc-design.md` are
+original repository guidance synthesized from the Tencent Game Institute
+panel recaps listed under Practitioner evidence in
+`authoritative-sources.md`, combined with repository-authored source-safety,
+authority, memory, privacy, prototyping, playtesting, UX, and system-analysis
+methods.
 
-It is not a verbatim record, peer-reviewed research, or an industry standard.
-It does not vendor the Tencent article, images, or distinctive long-form
-wording. Treat panel-derived categories, reported lessons, and retention ideas
-as practitioner lenses or hypotheses unless stronger project evidence or a
+Neither reference is a verbatim record, peer-reviewed research, or an industry
+standard. The plugin does not vendor the Tencent articles, images, or
+distinctive long-form wording. Treat panel-derived categories, reported
+lessons, model observations, memory practices, and retention ideas as
+practitioner lenses or hypotheses unless stronger project evidence or a
 primary source supports the claim.
 
 ## Citation behavior

@@ -34,6 +34,12 @@ The concept, system-GDD, and cross-GDD cases exercise
 `ai-native-game-design`. Installation evidence compares each canonical
 `SKILL.md` with its Claude Code and Codex cache copy.
 
+`fixtures/ai-npc-concept.md` is the raw concept used for the isolated EP.02
+forward test. It exercises NPC topology, social substrate, narrative
+milestones, memory lifecycle, offline autonomy, scene-relative intelligence,
+participation scaffolds, and interaction boundaries without embedding an
+expected answer.
+
 The committed raw model transcripts predate the two-plugin split and are
 retained as historical evidence. They are not counted by the current
 `validation-summary.json`; rerun the cases after installing the relevant

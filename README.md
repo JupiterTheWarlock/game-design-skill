@@ -39,13 +39,15 @@ characters and relationships.
 
 It covers product and feature classification, removal tests, player-AI
 interface contracts, bounded generation, deterministic game-state authority,
-legibility, character memory and continuity, failure recovery, safety and
-privacy requirements, prototypes, playtests, and AI-native design reviews.
+legibility, companion and multi-agent society topology, layered memory,
+authored open-narrative milestones, offline NPC autonomy, character continuity,
+failure recovery, safety and privacy requirements, prototypes, playtests, and
+AI-native design reviews.
 
 Its core method is a repository-authored synthesis of practitioner evidence
-from Tencent Game Institute. The source is treated as practitioner evidence,
-not as peer-reviewed research, an industry standard, or proof of player or
-market effects.
+from Tencent Game Institute's *Chuguang* EP.01 and EP.02 recaps. The sources
+are treated as practitioner evidence, not as peer-reviewed research, industry
+standards, model benchmarks, or proof of player or market effects.
 
 ## Repository contract
 

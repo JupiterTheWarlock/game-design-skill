@@ -71,6 +71,10 @@ def main() -> int:
                     "all_skill_sha256_equal"
                 )
             ),
+            "tracked_plugin_assets_match_both_installs": all(
+                bool(entry.get("all_tracked_assets_sha256_equal"))
+                for entry in installed_plugins.values()
+            ),
         },
         "authored_links": {
             "link_check_ok": bool(links.get("ok")),
@@ -96,6 +100,7 @@ def main() -> int:
         "environment_notes": [
             "Both plugin IDs were independently discovered and installed by Claude Code and Codex.",
             "Each canonical skill matched its Claude and Codex cache copy by SHA-256.",
+            "The new AI NPC reference asset matched its canonical copy in both product caches.",
             "Temporary installations, Marketplace registrations, caches, and generated local settings were removed after capture.",
         ],
     }

@@ -51,6 +51,14 @@ def main() -> int:
         )
         version = json.loads(manifest_path.read_text(encoding="utf-8"))["version"]
         skill_relative = Path("skills") / name / "SKILL.md"
+        tracked_relatives = [skill_relative]
+        if name == "ai-native-game-design":
+            tracked_relatives.append(
+                Path("skills")
+                / name
+                / "references"
+                / "ai-npc-design.md"
+            )
         files = {
             "canonical": ROOT / "plugins" / name / skill_relative,
             "claude_installed": (
@@ -82,11 +90,56 @@ def main() -> int:
                 "sha256": sha256(path) if path.is_file() else None,
             }
         hashes = [entry["sha256"] for entry in file_evidence.values()]
+        tracked_assets: dict[str, object] = {}
+        for relative in tracked_relatives:
+            asset_paths = {
+                "canonical": ROOT / "plugins" / name / relative,
+                "claude_installed": (
+                    user_profile
+                    / ".claude"
+                    / "plugins"
+                    / "cache"
+                    / MARKETPLACE
+                    / name
+                    / version
+                    / relative
+                ),
+                "codex_installed": (
+                    user_profile
+                    / ".codex"
+                    / "plugins"
+                    / "cache"
+                    / MARKETPLACE
+                    / name
+                    / version
+                    / relative
+                ),
+            }
+            asset_files = {
+                label: {
+                    "path": str(path),
+                    "exists": path.is_file(),
+                    "sha256": sha256(path) if path.is_file() else None,
+                }
+                for label, path in asset_paths.items()
+            }
+            asset_hashes = [entry["sha256"] for entry in asset_files.values()]
+            tracked_assets[str(relative).replace("\\", "/")] = {
+                "files": asset_files,
+                "all_sha256_equal": (
+                    all(asset_hashes) and len(set(asset_hashes)) == 1
+                ),
+            }
         plugin_evidence[name] = {
             "plugin": f"{name}@{MARKETPLACE}",
             "version": version,
             "files": file_evidence,
             "all_skill_sha256_equal": all(hashes) and len(set(hashes)) == 1,
+            "tracked_assets": tracked_assets,
+            "all_tracked_assets_sha256_equal": all(
+                bool(asset["all_sha256_equal"])
+                for asset in tracked_assets.values()
+            ),
         }
 
     commands = {
@@ -112,6 +165,7 @@ def main() -> int:
     }
     plugins_ok = all(
         bool(entry["all_skill_sha256_equal"])
+        and bool(entry["all_tracked_assets_sha256_equal"])
         for entry in plugin_evidence.values()
     )
     commands_ok = all(entry["returncode"] == 0 for entry in commands.values())

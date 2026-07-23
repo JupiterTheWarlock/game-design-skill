@@ -23,10 +23,12 @@ character or relationship over time.
 ## Source status
 
 This is a repository-authored synthesis, not a verbatim upstream record. Its
-starting practitioner source is the Tencent Game Institute panel recap listed
-under **Practitioner evidence** in `authoritative-sources.md`. The panel
-combines academic, laboratory, and shipped-project perspectives, but it is not
-a peer-reviewed paper or an industry standard.
+starting practitioner source is the Tencent Game Institute EP.01 panel recap
+listed under **Practitioner evidence** in `authoritative-sources.md`. That
+panel combines academic, laboratory, and shipped-project perspectives, but it
+is not a peer-reviewed paper or an industry standard. Use
+`ai-npc-design.md` for the distinct NPC, companion, society, memory, and open
+narrative guidance synthesized from EP.02.
 
 Use the panel for:
 
@@ -296,7 +298,7 @@ criteria.
 
 ## Treat retention claims as hypotheses
 
-The panel proposes two useful directions:
+The EP.01 panel proposes two useful directions:
 
 - relationship or emotional continuity;
 - player creation enabled by lower-friction generative tools.

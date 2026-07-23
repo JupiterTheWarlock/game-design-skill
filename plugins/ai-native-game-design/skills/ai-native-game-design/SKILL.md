@@ -6,7 +6,8 @@ description: >-
   adjudicates outcomes, or sustains intelligent characters and relationships.
   Use for AI-native or AI-enhanced mechanics, player-AI interfaces, bounded
   generation, game-state authority, character memory and continuity, failure
-  recovery, safety and privacy requirements, prototypes, playtests, and
+  recovery, AI companions, multi-agent societies, open narratives, offline
+  NPC autonomy, safety and privacy requirements, prototypes, playtests, and
   AI-native design reviews. Do not use merely because AI assists production.
 ---
 
@@ -21,19 +22,22 @@ testable player-facing behavior ahead of model capabilities.
 1. Read `references/provenance.md` before making a claim about where this
    skill's guidance came from.
 2. Read `references/authoritative-sources.md` before presenting the working
-   AI-native taxonomy, prototype lessons, or retention ideas as externally
-   supported.
+   AI-native taxonomy, prototype lessons, NPC design patterns, memory
+   practices, or retention ideas as externally supported.
 3. Read `references/ai-native-game-design.md` for every substantial design or
    review. Search its headings first and load only the relevant sections unless
    the user requests an end-to-end artifact or audit.
-4. Distinguish four kinds of content in substantial deliverables:
+4. Also read `references/ai-npc-design.md` when the task concerns a companion,
+   intelligent NPC, population of agents, persistent memory, offline autonomy,
+   or emergent or open narrative. Load only the relevant sections.
+5. Distinguish four kinds of content in substantial deliverables:
    - **Project fact**: directly supported by the user's files, data, or stated
      decisions.
    - **Practitioner lens**: a taxonomy, lesson, or hypothesis reported by the
      named practitioner source.
    - **Design proposal**: an option recommended for the current project.
    - **Assumption or unknown**: something requiring confirmation or a test.
-5. Do not invent citations, model guarantees, market adoption claims, player
+6. Do not invent citations, model guarantees, market adoption claims, player
    psychology claims, capability thresholds, latency budgets, safety limits,
    retention effects, or balance values.
 
@@ -55,16 +59,20 @@ Run product-level and feature-level removal tests. Do not treat the
 
 ## Route the request
 
-| User intent | Read these sections in `ai-native-game-design.md` |
+| User intent | Read |
 |---|---|
-| Classify a product or feature | `Classify the role of AI`, `Define the experience before the capability` |
-| Design a player input surface | `Specify the player-AI interface contract`, `Design bounded freedom` |
-| Design runtime generation or rule changes | `Specify the runtime play loop`, `Separate generation from game authority` |
-| Design an intelligent NPC or relationship | `Protect legibility and continuity`, `Specify character continuity and memory` |
-| Define reliability, safety, or privacy behavior | `Design failure, safety, and recovery` |
-| Plan a prototype or playtest | `Prototype and playtest the uncertainty` |
-| Evaluate engagement or retention claims | `Treat retention claims as hypotheses` |
-| Review an existing design | `Produce an AI-native design review` plus every section implicated by the design |
+| Classify a product or feature | `ai-native-game-design.md`: `Classify the role of AI`, `Define the experience before the capability` |
+| Design a player input surface | `ai-native-game-design.md`: `Specify the player-AI interface contract`, `Design bounded freedom` |
+| Design runtime generation or rule changes | `ai-native-game-design.md`: `Specify the runtime play loop`, `Separate generation from game authority` |
+| Design a close companion or relationship | `ai-native-game-design.md`: `Specify character continuity and memory`; `ai-npc-design.md`: `Choose the NPC experience topology`, `Layer memory by function and time horizon` |
+| Design a multi-agent society or population | `ai-npc-design.md`: `Choose the NPC experience topology`, `Build a deterministic social substrate`, `Design offline autonomy as player-relevant causality` |
+| Design open or emergent narrative | `ai-npc-design.md`: `Author meaningful narrative milestones`, `Design offline autonomy as player-relevant causality` |
+| Define NPC memory or offline behavior | `ai-npc-design.md`: `Layer memory by function and time horizon`, `Design offline autonomy as player-relevant causality` |
+| Bound NPC expression, OOC, or social realism | `ai-npc-design.md`: `Define scene-relative intelligence`, `Bound expression and out-of-character behavior` |
+| Define reliability, safety, or privacy behavior | `ai-native-game-design.md`: `Design failure, safety, and recovery`; add the relevant memory or expression section from `ai-npc-design.md` |
+| Plan a prototype or playtest | `ai-native-game-design.md`: `Prototype and playtest the uncertainty`; for NPC work also read `ai-npc-design.md`: `Prototype and playtest NPC uncertainty` |
+| Evaluate engagement or retention claims | `ai-native-game-design.md`: `Treat retention claims as hypotheses` |
+| Review an existing design | `ai-native-game-design.md`: `Produce an AI-native design review` plus every section implicated by the design |
 
 ## Run the core workflow
 
@@ -117,7 +125,10 @@ input through later consequence.
 For long-lived characters, separate immutable character identity, mutable
 relationship state, episodic memory, and authoritative world truth. Define
 contradiction handling, player correction, persona-change boundaries, context
-loss behavior, and data retention decisions.
+loss behavior, and data retention decisions. For persistent NPCs, also define
+memory layers, consolidation, type-specific decay, correction or pinning, and
+the player-visible consequences of activity that occurs while the player is
+away.
 
 ### 6. Design failure and recovery
 
@@ -164,5 +175,9 @@ than requiring another plugin's template. Include:
 8. prototype or playtest evidence;
 9. decision, risks, and next test;
 10. sources applied.
+
+For NPC, companion, society, or open-narrative work, also include the chosen
+topology, deterministic social substrate, memory policy, authored milestones,
+offline-autonomy consequences, and social-expression boundary when applicable.
 
 Do not make this plugin depend on another game-design plugin being installed.

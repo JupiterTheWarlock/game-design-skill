@@ -57,6 +57,9 @@ def main() -> int:
     required.append(
         REFERENCE_ROOTS["ai-native-game-design"] / "ai-native-game-design.md"
     )
+    required.append(
+        REFERENCE_ROOTS["ai-native-game-design"] / "ai-npc-design.md"
+    )
 
     for path in required:
         if not path.is_file():
@@ -166,6 +169,10 @@ def main() -> int:
         errors.append(
             "ai-native-game-design SKILL.md must route to its canonical reference"
         )
+    if "`references/ai-npc-design.md`" not in ai_text:
+        errors.append(
+            "ai-native-game-design SKILL.md must route to its NPC reference"
+        )
     if "../game-design-skill" in ai_text or "..\\game-design-skill" in ai_text:
         errors.append("ai-native-game-design must not depend on the sibling plugin")
 
@@ -246,12 +253,23 @@ def main() -> int:
         errors.append(
             "AI-native source index must retain the Tencent practitioner source"
         )
+    if "https://mp.weixin.qq.com/s/KBCZWEY1lVvvFvfhq_3Pvw" not in ai_sources:
+        errors.append(
+            "AI-native source index must include the Tencent EP.02 practitioner source"
+        )
     ai_reference = (
         REFERENCE_ROOTS["ai-native-game-design"] / "ai-native-game-design.md"
     ).read_text(encoding="utf-8")
     if "practitioner evidence" not in ai_reference.lower():
         errors.append(
             "AI-native reference must preserve its practitioner-evidence boundary"
+        )
+    ai_npc_reference = (
+        REFERENCE_ROOTS["ai-native-game-design"] / "ai-npc-design.md"
+    ).read_text(encoding="utf-8")
+    if "project-specific model sizes" not in ai_npc_reference:
+        errors.append(
+            "AI NPC reference must reject universal model-size guidance"
         )
 
     notice = (ROOT / "THIRD_PARTY_NOTICES.md").read_text(encoding="utf-8")

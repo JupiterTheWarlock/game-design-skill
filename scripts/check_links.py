@@ -41,6 +41,13 @@ AUTHORED = [
     / "skills"
     / "ai-native-game-design"
     / "references"
+    / "ai-npc-design.md",
+    ROOT
+    / "plugins"
+    / "ai-native-game-design"
+    / "skills"
+    / "ai-native-game-design"
+    / "references"
     / "authoritative-sources.md",
     ROOT
     / "plugins"
