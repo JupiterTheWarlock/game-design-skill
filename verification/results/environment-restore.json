@@ -1,0 +1,61 @@
+{
+  "captured_at_utc": "2026-07-23T03:31:01.407793+00:00",
+  "removals": {
+    "claude_plugin_uninstall": {
+      "command": "claude plugin uninstall game-design-skill@game-design-skill --scope local -y",
+      "returncode": 0,
+      "stdout": "√ Successfully uninstalled plugin: game-design-skill (scope: local)",
+      "stderr": ""
+    },
+    "claude_marketplace_remove": {
+      "command": "claude plugin marketplace remove game-design-skill --scope local",
+      "returncode": 0,
+      "stdout": "√ Successfully removed marketplace: game-design-skill (from local settings)",
+      "stderr": ""
+    },
+    "codex_plugin_remove": {
+      "command": "codex plugin remove game-design-skill@game-design-skill --json",
+      "returncode": 0,
+      "stdout": "{\n  \"pluginId\": \"game-design-skill@game-design-skill\",\n  \"name\": \"game-design-skill\",\n  \"marketplaceName\": \"game-design-skill\"\n}",
+      "stderr": ""
+    },
+    "codex_marketplace_remove": {
+      "command": "codex plugin marketplace remove game-design-skill --json",
+      "returncode": 0,
+      "stdout": "{\n  \"marketplaceName\": \"game-design-skill\",\n  \"installedRoot\": null\n}",
+      "stderr": ""
+    }
+  },
+  "post_removal_checks": {
+    "claude_plugins": {
+      "command": "claude plugin list --json",
+      "returncode": 0,
+      "stderr": "",
+      "matching_entries": []
+    },
+    "claude_marketplaces": {
+      "command": "claude plugin marketplace list --json",
+      "returncode": 0,
+      "stderr": "",
+      "matching_entries": []
+    },
+    "codex_plugins": {
+      "command": "codex plugin list --available --json",
+      "returncode": 0,
+      "stderr": "",
+      "matching_entries": []
+    },
+    "codex_marketplaces": {
+      "command": "codex plugin marketplace list --json",
+      "returncode": 0,
+      "stderr": "",
+      "matching_entries": []
+    }
+  },
+  "caches_absent": {
+    "claude": true,
+    "codex": true
+  },
+  "project_local_settings_absent": true,
+  "ok": true
+}
