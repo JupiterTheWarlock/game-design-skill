@@ -1,54 +1,17 @@
 {
   "ok": true,
+  "baseline": "two independently installable Marketplace plugins",
   "cases": {
-    "codex_concept_and_pillars": {
-      "Project Facts": true,
-      "Design Proposal": true,
-      "Pillars": true,
-      "Sources Applied": true,
-      "turn.completed": true
+    "repository_structure": {
+      "verifier_ok": true,
+      "plugin_count_is_2": true,
+      "skill_count_is_2": true,
+      "all_vendored_references_routed": true
     },
-    "claude_system_gdd": {
-      "States and Transitions": true,
-      "Formula 1": true,
-      "Edge Cases": true,
-      "Given": true,
-      "proposal": true,
-      "No files were written": true,
-      "Sources Applied": true,
-      "claude_success": true
-    },
-    "codex_cross_gdd_review": {
-      "20": true,
-      "10": true,
-      "25%": true,
-      "50%": true,
-      "duplicated tuning-knob ownership": true,
-      "plausible readings": true,
-      "structural concerns rather than proven balance failures": true,
-      "Sources Applied": true,
-      "turn.completed": true,
-      "does_not_infer_201_hp": true
-    },
-    "codex_ai_native_review": {
-      "feature": true,
-      "removal": true,
-      "interface": true,
-      "authority": true,
-      "bounded": true,
-      "Curator": true,
-      "memory": true,
-      "privacy": true,
-      "retention": true,
-      "unsupported": true,
-      "narrow": true,
-      "ai-native-game-design.md": true,
-      "Sources Applied": true,
-      "turn.completed": true
-    },
-    "dual_installation": {
+    "dual_platform_installation": {
       "commands_ok": true,
-      "canonical_sha_matches_both_installs": true
+      "game_design_sha_matches_both_installs": true,
+      "ai_native_sha_matches_both_installs": true
     },
     "authored_links": {
       "link_check_ok": true
@@ -58,17 +21,18 @@
     }
   },
   "case_status": {
-    "codex_concept_and_pillars": true,
-    "claude_system_gdd": true,
-    "codex_cross_gdd_review": true,
-    "codex_ai_native_review": true,
-    "dual_installation": true,
+    "repository_structure": true,
+    "dual_platform_installation": true,
     "authored_links": true,
     "environment_restore": true
   },
+  "historical_behavioral_transcripts": {
+    "counted_as_current_gate": false,
+    "note": "Existing raw model transcripts predate the two-plugin split. Current isolated forward tests are summarized in verification/REPORT.md."
+  },
   "environment_notes": [
-    "Claude system-GDD succeeded after unrelated user MCP servers were isolated with an empty MCP fixture.",
-    "The final Codex cross-GDD turn emitted agent_message and turn.completed before the wrapper stopped a hanging user-MCP shutdown; raw stderr and timeout metadata are preserved.",
-    "The Codex AI-native review exercises the repository-authored practitioner synthesis through the installed Marketplace skill."
+    "Both plugin IDs were independently discovered and installed by Claude Code and Codex.",
+    "Each canonical skill matched its Claude and Codex cache copy by SHA-256.",
+    "Temporary installations, Marketplace registrations, caches, and generated local settings were removed after capture."
   ]
 }

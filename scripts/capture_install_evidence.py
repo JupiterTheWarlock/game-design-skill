@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Capture dual-platform installation discovery and canonical SHA evidence."""
+"""Capture dual-platform discovery and canonical SHA evidence for both plugins."""
 
 from __future__ import annotations
 
@@ -13,7 +13,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 RESULT_PATH = ROOT / "verification" / "results" / "install-evidence.json"
-SKILL_RELATIVE = Path("skills") / "game-design-skill" / "SKILL.md"
+MARKETPLACE = "game-design-skill"
+PLUGIN_NAMES = ("game-design-skill", "ai-native-game-design")
 
 
 def sha256(path: Path) -> str:
@@ -42,84 +43,91 @@ def powershell(command: str) -> dict[str, object]:
 
 def main() -> int:
     user_profile = Path(os.environ["USERPROFILE"])
-    version = json.loads(
-        (ROOT / "plugins" / "game-design-skill" / ".claude-plugin" / "plugin.json").read_text(
-            encoding="utf-8"
-        )
-    )["version"]
-    canonical = (
-        ROOT
-        / "plugins"
-        / "game-design-skill"
-        / "skills"
-        / "game-design-skill"
-        / "SKILL.md"
-    )
-    claude_installed = (
-        user_profile
-        / ".claude"
-        / "plugins"
-        / "cache"
-        / "game-design-skill"
-        / "game-design-skill"
-        / version
-        / SKILL_RELATIVE
-    )
-    codex_installed = (
-        user_profile
-        / ".codex"
-        / "plugins"
-        / "cache"
-        / "game-design-skill"
-        / "game-design-skill"
-        / version
-        / SKILL_RELATIVE
-    )
+    plugin_evidence: dict[str, object] = {}
 
-    files = {
-        "canonical": canonical,
-        "claude_installed": claude_installed,
-        "codex_installed": codex_installed,
-    }
-    file_evidence: dict[str, object] = {}
-    for name, path in files.items():
-        file_evidence[name] = {
-            "path": str(path),
-            "exists": path.is_file(),
-            "sha256": sha256(path) if path.is_file() else None,
+    for name in PLUGIN_NAMES:
+        manifest_path = (
+            ROOT / "plugins" / name / ".claude-plugin" / "plugin.json"
+        )
+        version = json.loads(manifest_path.read_text(encoding="utf-8"))["version"]
+        skill_relative = Path("skills") / name / "SKILL.md"
+        files = {
+            "canonical": ROOT / "plugins" / name / skill_relative,
+            "claude_installed": (
+                user_profile
+                / ".claude"
+                / "plugins"
+                / "cache"
+                / MARKETPLACE
+                / name
+                / version
+                / skill_relative
+            ),
+            "codex_installed": (
+                user_profile
+                / ".codex"
+                / "plugins"
+                / "cache"
+                / MARKETPLACE
+                / name
+                / version
+                / skill_relative
+            ),
+        }
+        file_evidence: dict[str, object] = {}
+        for label, path in files.items():
+            file_evidence[label] = {
+                "path": str(path),
+                "exists": path.is_file(),
+                "sha256": sha256(path) if path.is_file() else None,
+            }
+        hashes = [entry["sha256"] for entry in file_evidence.values()]
+        plugin_evidence[name] = {
+            "plugin": f"{name}@{MARKETPLACE}",
+            "version": version,
+            "files": file_evidence,
+            "all_skill_sha256_equal": all(hashes) and len(set(hashes)) == 1,
         }
 
     commands = {
         "claude_version": powershell("claude --version"),
-        "claude_plugin_details": powershell(
+        "claude_game_design_details": powershell(
             "claude plugin details game-design-skill@game-design-skill"
         ),
+        "claude_ai_native_details": powershell(
+            "claude plugin details ai-native-game-design@game-design-skill"
+        ),
         "claude_marketplace_match": powershell(
-            "claude plugin marketplace list | Select-String -Pattern 'game-design-skill'"
+            "claude plugin marketplace list | "
+            "Select-String -Pattern 'game-design-skill'"
         ),
         "codex_version": powershell("codex --version"),
         "codex_plugin_list": powershell(
             "codex plugin list --marketplace game-design-skill --json"
         ),
         "codex_marketplace_match": powershell(
-            "codex plugin marketplace list --json | Select-String -Pattern 'game-design-skill'"
+            "codex plugin marketplace list --json | "
+            "Select-String -Pattern 'game-design-skill'"
         ),
     }
-    hashes = [entry["sha256"] for entry in file_evidence.values()]
-    all_same = all(hashes) and len(set(hashes)) == 1
+    plugins_ok = all(
+        bool(entry["all_skill_sha256_equal"])
+        for entry in plugin_evidence.values()
+    )
     commands_ok = all(entry["returncode"] == 0 for entry in commands.values())
     evidence = {
         "captured_at_utc": datetime.now(timezone.utc).isoformat(),
-        "plugin": "game-design-skill@game-design-skill",
-        "version": version,
-        "files": file_evidence,
-        "all_skill_sha256_equal": all_same,
+        "marketplace": MARKETPLACE,
+        "plugins": plugin_evidence,
         "commands": commands,
         "commands_ok": commands_ok,
-        "ok": all_same and commands_ok,
+        "ok": plugins_ok and commands_ok,
     }
     RESULT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    RESULT_PATH.write_text(json.dumps(evidence, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    RESULT_PATH.write_text(
+        json.dumps(evidence, indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
     print(json.dumps({"path": str(RESULT_PATH), "ok": evidence["ok"]}, indent=2))
     return 0 if evidence["ok"] else 1
 

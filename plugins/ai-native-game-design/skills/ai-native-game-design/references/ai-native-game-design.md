@@ -374,7 +374,7 @@ Lead with the design outcome, then report:
 8. **Decision:** proceed, narrow, pivot, or stop, with blockers, concerns, and
    optional improvements separated.
 9. **Sources applied:** project artifacts, this authored synthesis, applicable
-   upstream workflows, and any primary or institutional sources actually used.
+   project workflows, and any primary or institutional sources actually used.
 
 Do not award an "AI-native" label as a quality score. Judge whether the chosen
 AI role produces a coherent, testable, and worthwhile player experience.

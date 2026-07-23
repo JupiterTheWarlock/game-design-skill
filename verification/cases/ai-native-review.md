@@ -1,4 +1,4 @@
-Use the installed game-design-skill. Read
+Use the installed ai-native-game-design skill. Read
 `verification/fixtures/ai-native-concept.md`.
 
 Produce a concise AI-native gameplay design review. Classify the product and
@@ -12,5 +12,5 @@ Treat practitioner claims as hypotheses rather than consensus definitions or
 proven player effects. Prioritize the next prototype and playtest cases, then
 recommend proceed, narrow, pivot, or stop. Do not write files.
 
-End with a `Sources Applied` section naming the internal game-design-skill
+End with a `Sources Applied` section naming the internal ai-native-game-design
 references actually used.

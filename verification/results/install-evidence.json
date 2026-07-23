@@ -1,25 +1,52 @@
 {
-  "captured_at_utc": "2026-07-23T04:57:39.734591+00:00",
-  "plugin": "game-design-skill@game-design-skill",
-  "version": "0.2.0",
-  "files": {
-    "canonical": {
-      "path": "C:\\Users\\GJM258\\JtheWLToolBox\\game-design-skill\\plugins\\game-design-skill\\skills\\game-design-skill\\SKILL.md",
-      "exists": true,
-      "sha256": "89796b434754c0bdeb2609d300a89aa417af0ee76ef8c94a575ba266f45b5a57"
+  "captured_at_utc": "2026-07-23T07:05:40.584765+00:00",
+  "marketplace": "game-design-skill",
+  "plugins": {
+    "game-design-skill": {
+      "plugin": "game-design-skill@game-design-skill",
+      "version": "0.3.0",
+      "files": {
+        "canonical": {
+          "path": "C:\\Users\\GJM258\\JtheWLToolBox\\game-design-skill\\plugins\\game-design-skill\\skills\\game-design-skill\\SKILL.md",
+          "exists": true,
+          "sha256": "0e44af03580ced53f50244c24b87555d12334146e7dba87d6abaaf3a2f03e790"
+        },
+        "claude_installed": {
+          "path": "C:\\Users\\GJM258\\.claude\\plugins\\cache\\game-design-skill\\game-design-skill\\0.3.0\\skills\\game-design-skill\\SKILL.md",
+          "exists": true,
+          "sha256": "0e44af03580ced53f50244c24b87555d12334146e7dba87d6abaaf3a2f03e790"
+        },
+        "codex_installed": {
+          "path": "C:\\Users\\GJM258\\.codex\\plugins\\cache\\game-design-skill\\game-design-skill\\0.3.0\\skills\\game-design-skill\\SKILL.md",
+          "exists": true,
+          "sha256": "0e44af03580ced53f50244c24b87555d12334146e7dba87d6abaaf3a2f03e790"
+        }
+      },
+      "all_skill_sha256_equal": true
     },
-    "claude_installed": {
-      "path": "C:\\Users\\GJM258\\.claude\\plugins\\cache\\game-design-skill\\game-design-skill\\0.2.0\\skills\\game-design-skill\\SKILL.md",
-      "exists": true,
-      "sha256": "89796b434754c0bdeb2609d300a89aa417af0ee76ef8c94a575ba266f45b5a57"
-    },
-    "codex_installed": {
-      "path": "C:\\Users\\GJM258\\.codex\\plugins\\cache\\game-design-skill\\game-design-skill\\0.2.0\\skills\\game-design-skill\\SKILL.md",
-      "exists": true,
-      "sha256": "89796b434754c0bdeb2609d300a89aa417af0ee76ef8c94a575ba266f45b5a57"
+    "ai-native-game-design": {
+      "plugin": "ai-native-game-design@game-design-skill",
+      "version": "0.1.0",
+      "files": {
+        "canonical": {
+          "path": "C:\\Users\\GJM258\\JtheWLToolBox\\game-design-skill\\plugins\\ai-native-game-design\\skills\\ai-native-game-design\\SKILL.md",
+          "exists": true,
+          "sha256": "7470c9b0c8081c6fded47f5a60481e386d8b9b10ff9ddc4b3f4669da0f947420"
+        },
+        "claude_installed": {
+          "path": "C:\\Users\\GJM258\\.claude\\plugins\\cache\\game-design-skill\\ai-native-game-design\\0.1.0\\skills\\ai-native-game-design\\SKILL.md",
+          "exists": true,
+          "sha256": "7470c9b0c8081c6fded47f5a60481e386d8b9b10ff9ddc4b3f4669da0f947420"
+        },
+        "codex_installed": {
+          "path": "C:\\Users\\GJM258\\.codex\\plugins\\cache\\game-design-skill\\ai-native-game-design\\0.1.0\\skills\\ai-native-game-design\\SKILL.md",
+          "exists": true,
+          "sha256": "7470c9b0c8081c6fded47f5a60481e386d8b9b10ff9ddc4b3f4669da0f947420"
+        }
+      },
+      "all_skill_sha256_equal": true
     }
   },
-  "all_skill_sha256_equal": true,
   "commands": {
     "claude_version": {
       "command": "claude --version",
@@ -27,10 +54,16 @@
       "stdout": "2.1.216 (Claude Code)",
       "stderr": ""
     },
-    "claude_plugin_details": {
+    "claude_game_design_details": {
       "command": "claude plugin details game-design-skill@game-design-skill",
       "returncode": 0,
-      "stdout": "game-design-skill 0.2.0\n  Guide game concepts, systems, AI-native gameplay, GDDs, balance, prototypes, playtests, UX, and design reviews with traceable sources.\n  Source: game-design-skill@game-design-skill\n\nComponent inventory\n  Skills (1)  game-design-skill\n  Agents (0)\n  Hooks (0)\n  MCP servers (0)\n  LSP servers (0)\n\nProjected token cost\n  Always-on:   ~125 tok   added to every session\n\nPer-component (rounded)\n  component          always-on  on-invoke\n  game-design-skill       ~130      ~2.9k\n\n  On-invoke cost is paid each time a skill or agent fires.\n  Token counts are estimates and may differ from actual usage.",
+      "stdout": "game-design-skill 0.3.0\n  Guide game concepts, systems, GDDs, balance, prototypes, playtests, UX, and design reviews with traceable sources.\n  Source: game-design-skill@game-design-skill\n\nComponent inventory\n  Skills (1)  game-design-skill\n  Agents (0)\n  Hooks (0)\n  MCP servers (0)\n  LSP servers (0)\n\nProjected token cost\n  Always-on:   ~114 tok   added to every session\n\nPer-component (rounded)\n  component          always-on  on-invoke\n  game-design-skill       ~110      ~2.7k\n\n  On-invoke cost is paid each time a skill or agent fires.\n  Token counts are estimates and may differ from actual usage.",
+      "stderr": ""
+    },
+    "claude_ai_native_details": {
+      "command": "claude plugin details ai-native-game-design@game-design-skill",
+      "returncode": 0,
+      "stdout": "ai-native-game-design 0.1.0\n  Design and review runtime AI gameplay with source-aware methods.\n  Source: ai-native-game-design@game-design-skill\n\nComponent inventory\n  Skills (1)  ai-native-game-design\n  Agents (0)\n  Hooks (0)\n  MCP servers (0)\n  LSP servers (0)\n\nProjected token cost\n  Always-on:   ~139 tok   added to every session\n\nPer-component (rounded)\n  component              always-on  on-invoke\n  ai-native-game-design       ~140      ~1.8k\n\n  On-invoke cost is paid each time a skill or agent fires.\n  Token counts are estimates and may differ from actual usage.",
       "stderr": ""
     },
     "claude_marketplace_match": {
@@ -48,7 +81,7 @@
     "codex_plugin_list": {
       "command": "codex plugin list --marketplace game-design-skill --json",
       "returncode": 0,
-      "stdout": "{\n  \"installed\": [\n    {\n      \"pluginId\": \"game-design-skill@game-design-skill\",\n      \"name\": \"game-design-skill\",\n      \"marketplaceName\": \"game-design-skill\",\n      \"version\": \"0.2.0\",\n      \"installed\": true,\n      \"enabled\": true,\n      \"source\": {\n        \"source\": \"local\",\n        \"path\": \"C:\\\\Users\\\\GJM258\\\\JtheWLToolBox\\\\game-design-skill\\\\plugins\\\\game-design-skill\"\n      },\n      \"marketplaceSource\": {\n        \"sourceType\": \"local\",\n        \"source\": \"\\\\\\\\?\\\\C:\\\\Users\\\\GJM258\\\\JtheWLToolBox\\\\game-design-skill\"\n      },\n      \"installPolicy\": \"AVAILABLE\",\n      \"authPolicy\": \"ON_INSTALL\"\n    }\n  ],\n  \"available\": []\n}",
+      "stdout": "{\n  \"installed\": [\n    {\n      \"pluginId\": \"game-design-skill@game-design-skill\",\n      \"name\": \"game-design-skill\",\n      \"marketplaceName\": \"game-design-skill\",\n      \"version\": \"0.3.0\",\n      \"installed\": true,\n      \"enabled\": true,\n      \"source\": {\n        \"source\": \"local\",\n        \"path\": \"C:\\\\Users\\\\GJM258\\\\JtheWLToolBox\\\\game-design-skill\\\\plugins\\\\game-design-skill\"\n      },\n      \"marketplaceSource\": {\n        \"sourceType\": \"local\",\n        \"source\": \"\\\\\\\\?\\\\C:\\\\Users\\\\GJM258\\\\JtheWLToolBox\\\\game-design-skill\"\n      },\n      \"installPolicy\": \"AVAILABLE\",\n      \"authPolicy\": \"ON_INSTALL\"\n    },\n    {\n      \"pluginId\": \"ai-native-game-design@game-design-skill\",\n      \"name\": \"ai-native-game-design\",\n      \"marketplaceName\": \"game-design-skill\",\n      \"version\": \"0.1.0\",\n      \"installed\": true,\n      \"enabled\": true,\n      \"source\": {\n        \"source\": \"local\",\n        \"path\": \"C:\\\\Users\\\\GJM258\\\\JtheWLToolBox\\\\game-design-skill\\\\plugins\\\\ai-native-game-design\"\n      },\n      \"marketplaceSource\": {\n        \"sourceType\": \"local\",\n        \"source\": \"\\\\\\\\?\\\\C:\\\\Users\\\\GJM258\\\\JtheWLToolBox\\\\game-design-skill\"\n      },\n      \"installPolicy\": \"AVAILABLE\",\n      \"authPolicy\": \"ON_INSTALL\"\n    }\n  ],\n  \"available\": []\n}",
       "stderr": ""
     },
     "codex_marketplace_match": {

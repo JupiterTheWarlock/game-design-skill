@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Delete only the exact cache/settings directories created by local validation."""
+"""Delete only the exact shared Marketplace caches created by local validation."""
 
 from __future__ import annotations
 

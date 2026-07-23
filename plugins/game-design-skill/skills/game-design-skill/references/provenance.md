@@ -38,19 +38,6 @@ not represented as verbatim upstream text. Its adaptations are limited to:
 - adding source-authority, licensing, and claim-safety rules;
 - allowing both Claude Code and Codex to use one canonical skill body.
 
-## Repository-authored synthesis
-
-`references/ai-native-game-design.md` is original repository guidance
-synthesized from the Tencent Game Institute panel listed under Practitioner
-evidence in `authoritative-sources.md`, combined with the skill's existing
-source-safety, prototyping, playtesting, UX, and system-design contracts.
-
-It is not a verbatim upstream record and is not part of
-`provenance/upstream-lock.json`. It does not vendor the Tencent article,
-images, or distinctive long-form wording. Treat the panel-derived taxonomy,
-reported lessons, and retention ideas as practitioner lenses or hypotheses
-unless stronger project evidence or a primary source supports the claim.
-
 ## Citation behavior
 
 When a user requests provenance or a formal design artifact, cite the vendored

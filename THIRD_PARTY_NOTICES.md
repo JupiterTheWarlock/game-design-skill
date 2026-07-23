@@ -31,7 +31,8 @@ SOFTWARE.
 
 ## Other cited sources
 
-The skill cites primary papers, author sites, and institutional guidance in
-`references/authoritative-sources.md`. Those sources are not vendored. Only
-short quotations or accurate summaries may be used unless their licenses
-separately permit broader reproduction.
+The plugins cite primary papers, author sites, institutional guidance, and
+practitioner evidence in their respective `references/authoritative-sources.md`
+files. Those sources are not vendored. Only short quotations or accurate
+summaries may be used unless their licenses separately permit broader
+reproduction.

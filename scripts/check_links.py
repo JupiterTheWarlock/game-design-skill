@@ -30,11 +30,25 @@ AUTHORED = [
     / "provenance.md",
     ROOT
     / "plugins"
-    / "game-design-skill"
+    / "ai-native-game-design"
     / "skills"
-    / "game-design-skill"
+    / "ai-native-game-design"
     / "references"
     / "ai-native-game-design.md",
+    ROOT
+    / "plugins"
+    / "ai-native-game-design"
+    / "skills"
+    / "ai-native-game-design"
+    / "references"
+    / "authoritative-sources.md",
+    ROOT
+    / "plugins"
+    / "ai-native-game-design"
+    / "skills"
+    / "ai-native-game-design"
+    / "references"
+    / "provenance.md",
     ROOT / "verification" / "README.md",
 ]
 

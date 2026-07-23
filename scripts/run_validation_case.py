@@ -112,7 +112,11 @@ def main() -> int:
             stderr=subprocess.DEVNULL,
             check=False,
         )
-        stdout, stderr = process.communicate()
+        try:
+            stdout, stderr = process.communicate(timeout=30)
+        except subprocess.TimeoutExpired:
+            process.kill()
+            stdout, stderr = process.communicate(timeout=10)
     elapsed = round(time.monotonic() - started, 3)
 
     stem = f"{args.platform}-{args.case}"

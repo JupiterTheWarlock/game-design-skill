@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-"""Remove the temporary dual-platform installation and prove it is absent."""
+"""Remove both temporary dual-platform plugin installs and prove they are absent."""
 
 from __future__ import annotations
 
 import argparse
 import json
 import os
+import shutil
 import subprocess
 from datetime import datetime, timezone
 from pathlib import Path
@@ -13,7 +14,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 RESULT_PATH = ROOT / "verification" / "results" / "environment-restore.json"
-TARGET = "game-design-skill"
+MARKETPLACE = "game-design-skill"
+PLUGIN_NAMES = ("game-design-skill", "ai-native-game-design")
+TARGETS = (MARKETPLACE, *PLUGIN_NAMES)
 
 
 def powershell(command: str) -> dict[str, object]:
@@ -40,12 +43,20 @@ def json_matches(output: str) -> list[object]:
     try:
         value = json.loads(output)
     except json.JSONDecodeError:
-        return [{"unparsed_output": output}] if TARGET in output else []
+        return (
+            [{"unparsed_output": output}]
+            if any(target in output for target in TARGETS)
+            else []
+        )
     matches: list[object] = []
 
     def walk(node: object) -> None:
         if isinstance(node, dict):
-            if any(TARGET in str(item) for item in node.values()):
+            if any(
+                target in str(item)
+                for target in TARGETS
+                for item in node.values()
+            ):
                 matches.append(node)
                 return
             for item in node.values():
@@ -71,19 +82,47 @@ def main() -> int:
         removals = previous["removals"]
     else:
         removals = {
-            "claude_plugin_uninstall": powershell(
+            "claude_game_design_uninstall": powershell(
                 "claude plugin uninstall game-design-skill@game-design-skill --scope local -y"
+            ),
+            "claude_ai_native_uninstall": powershell(
+                "claude plugin uninstall ai-native-game-design@game-design-skill --scope local -y"
             ),
             "claude_marketplace_remove": powershell(
                 "claude plugin marketplace remove game-design-skill --scope local"
             ),
-            "codex_plugin_remove": powershell(
+            "codex_game_design_remove": powershell(
                 "codex plugin remove game-design-skill@game-design-skill --json"
+            ),
+            "codex_ai_native_remove": powershell(
+                "codex plugin remove ai-native-game-design@game-design-skill --json"
             ),
             "codex_marketplace_remove": powershell(
                 "codex plugin marketplace remove game-design-skill --json"
             ),
         }
+    user_profile = Path(os.environ["USERPROFILE"]).resolve()
+    cache_paths = {
+        "claude": user_profile / ".claude" / "plugins" / "cache" / MARKETPLACE,
+        "codex": user_profile / ".codex" / "plugins" / "cache" / MARKETPLACE,
+    }
+    project_local_settings = ROOT / ".claude"
+    cleanup_targets = [*cache_paths.values(), project_local_settings]
+    expected_targets = {
+        str(user_profile / ".claude" / "plugins" / "cache" / MARKETPLACE),
+        str(user_profile / ".codex" / "plugins" / "cache" / MARKETPLACE),
+        str(ROOT / ".claude"),
+    }
+    resolved_targets = {str(path.resolve()) for path in cleanup_targets}
+    if resolved_targets != expected_targets:
+        raise SystemExit(
+            "Refusing cleanup: resolved targets differ from allowlist: "
+            f"{resolved_targets}"
+        )
+    for path in cleanup_targets:
+        if path.exists():
+            shutil.rmtree(path)
+
     checks = {
         "claude_plugins": powershell("claude plugin list --json"),
         "claude_marketplaces": powershell("claude plugin marketplace list --json"),
@@ -93,13 +132,8 @@ def main() -> int:
     matches = {
         name: json_matches(str(result["stdout"])) for name, result in checks.items()
     }
-    user_profile = Path(os.environ["USERPROFILE"])
-    cache_paths = {
-        "claude": user_profile / ".claude" / "plugins" / "cache" / TARGET,
-        "codex": user_profile / ".codex" / "plugins" / "cache" / TARGET,
-    }
     caches_absent = {name: not path.exists() for name, path in cache_paths.items()}
-    project_local_settings_absent = not (ROOT / ".claude").exists()
+    project_local_settings_absent = not project_local_settings.exists()
     removals_ok = all(result["returncode"] == 0 for result in removals.values())
     checks_ok = all(result["returncode"] == 0 for result in checks.values())
     no_matches = all(not found for found in matches.values())

@@ -1,10 +1,16 @@
 {
-  "captured_at_utc": "2026-07-23T04:57:44.940257+00:00",
+  "captured_at_utc": "2026-07-23T07:15:31.416319+00:00",
   "removals": {
-    "claude_plugin_uninstall": {
+    "claude_game_design_uninstall": {
       "command": "claude plugin uninstall game-design-skill@game-design-skill --scope local -y",
       "returncode": 0,
       "stdout": "√ Successfully uninstalled plugin: game-design-skill (scope: local)",
+      "stderr": ""
+    },
+    "claude_ai_native_uninstall": {
+      "command": "claude plugin uninstall ai-native-game-design@game-design-skill --scope local -y",
+      "returncode": 0,
+      "stdout": "√ Successfully uninstalled plugin: ai-native-game-design (scope: local)",
       "stderr": ""
     },
     "claude_marketplace_remove": {
@@ -13,10 +19,16 @@
       "stdout": "√ Successfully removed marketplace: game-design-skill (from local settings)",
       "stderr": ""
     },
-    "codex_plugin_remove": {
+    "codex_game_design_remove": {
       "command": "codex plugin remove game-design-skill@game-design-skill --json",
       "returncode": 0,
       "stdout": "{\n  \"pluginId\": \"game-design-skill@game-design-skill\",\n  \"name\": \"game-design-skill\",\n  \"marketplaceName\": \"game-design-skill\"\n}",
+      "stderr": ""
+    },
+    "codex_ai_native_remove": {
+      "command": "codex plugin remove ai-native-game-design@game-design-skill --json",
+      "returncode": 0,
+      "stdout": "{\n  \"pluginId\": \"ai-native-game-design@game-design-skill\",\n  \"name\": \"ai-native-game-design\",\n  \"marketplaceName\": \"game-design-skill\"\n}",
       "stderr": ""
     },
     "codex_marketplace_remove": {
