@@ -17,6 +17,7 @@ PLUGIN_PATH = PLUGIN_ROOT / ".claude-plugin" / "plugin.json"
 SKILL_ROOT = PLUGIN_ROOT / "skills" / "game-design-skill"
 SKILL_PATH = SKILL_ROOT / "SKILL.md"
 REFERENCE_ROOT = SKILL_ROOT / "references"
+AI_NATIVE_REFERENCE_PATH = REFERENCE_ROOT / "ai-native-game-design.md"
 CONFIG_PATH = ROOT / "provenance" / "upstream-files.json"
 LOCK_PATH = ROOT / "provenance" / "upstream-lock.json"
 
@@ -35,6 +36,7 @@ def main() -> int:
         SKILL_ROOT / "agents" / "openai.yaml",
         REFERENCE_ROOT / "provenance.md",
         REFERENCE_ROOT / "authoritative-sources.md",
+        AI_NATIVE_REFERENCE_PATH,
         CONFIG_PATH,
         LOCK_PATH,
         ROOT / "LICENSE",
@@ -133,6 +135,17 @@ def main() -> int:
         errors.append("canonical SKILL.md still contains a TODO placeholder")
     if len(skill_text.splitlines()) >= 500:
         errors.append("canonical SKILL.md must remain under 500 lines")
+    if "`ai-native-game-design.md`" not in skill_text:
+        errors.append("canonical SKILL.md must route AI-native gameplay to its authored reference")
+
+    authoritative_text = (REFERENCE_ROOT / "authoritative-sources.md").read_text(
+        encoding="utf-8"
+    )
+    if "https://gameinstitute.qq.com/news/detail/317" not in authoritative_text:
+        errors.append("authoritative source index must retain the AI-native practitioner source")
+    ai_native_text = AI_NATIVE_REFERENCE_PATH.read_text(encoding="utf-8")
+    if "practitioner evidence" not in ai_native_text.lower():
+        errors.append("AI-native reference must preserve its practitioner-evidence boundary")
 
     interface_text = (SKILL_ROOT / "agents" / "openai.yaml").read_text(encoding="utf-8")
     if "$game-design-skill" not in interface_text:

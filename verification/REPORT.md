@@ -1,7 +1,7 @@
 # Validation report
 
 Validation baseline: Claude Code `2.1.216`, Codex CLI `0.142.0`, plugin
-version `0.1.0`.
+version `0.2.0`.
 
 ## Repository and provenance
 
@@ -9,17 +9,20 @@ version `0.1.0`.
 - Canonical `SKILL.md` files: 1.
 - Verbatim upstream files: 38, all pinned to Donchitos commit
   `984023ddac0d5e27624f2baacde6105e45de375f`.
+- Repository-authored AI-native gameplay synthesis: 1, derived from clearly
+  labelled Tencent Game Institute practitioner evidence rather than vendored
+  article text or images.
 - Every vendored file is SHA-256 checked, has an immutable source URL and full
   source-line range, and is routed by the canonical skill.
 - The Donchitos MIT notice is retained in `THIRD_PARTY_NOTICES.md`.
 - The canonical skill, Claude installed copy, and Codex installed copy had the
   same SHA-256 during validation:
-  `fbfb5782133c0d129323ef5067439b70ecbe6060b5d79ce450c7667de9196edc`.
+  `89796b434754c0bdeb2609d300a89aa417af0ee76ef8c94a575ba266f45b5a57`.
 
 ## Static gates
 
 - `scripts/verify_repository.py`: pass.
-- `scripts/check_links.py`: pass; 5 authored files and 10 authoritative HTTPS
+- `scripts/check_links.py`: pass; 6 authored files and 11 authoritative HTTPS
   URLs checked for valid structure. Immutable GitHub source paths are checked
   separately by the repository verifier.
 - skill-creator `quick_validate.py`: pass.
@@ -41,6 +44,18 @@ version `0.1.0`.
    correctly presented floor/cap/order as multiple plausible interpretations
    and called incomplete economy conclusions structural risks rather than
    proven failures.
+4. **Codex — AI-native gameplay review:** completed with return code 0 and no
+   timeout. It classified the whole product as AI-enhanced and the
+   generative-card feature as potentially AI-native, applied product- and
+   feature-level removal tests, rejected “infinite possibility” and unsupported
+   retention claims as evidence, found the undefined state-authority,
+   bounded-input, Curator-memory, privacy, safety, and recovery contracts, and
+   recommended narrowing to a falsifiable card-authorship prototype.
+
+The AI-native case preserved ambient user-environment Marketplace, model-cache,
+MCP-shutdown, and analytics warnings in stderr. Its process returned 0, emitted
+`turn.completed`, and did not time out; the warnings are retained as evidence
+rather than removed from the transcript.
 
 The cross-GDD Codex process did not exit cleanly after `turn.completed` because
 an unrelated user MCP connection hung during shutdown. The validation wrapper

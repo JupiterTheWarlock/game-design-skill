@@ -4,9 +4,10 @@ description: >-
   Source-grounded game design guidance for concept ideation, game pillars,
   core loops, system decomposition, GDD authoring, formulas and tuning knobs,
   balance and economy analysis, prototyping, playtest interpretation, UX,
-  accessibility, scope control, design-change propagation, and single- or
-  cross-document design review. Use when creating, refining, documenting,
-  auditing, or validating how a game should work or feel.
+  accessibility, AI-native and runtime-generative gameplay, scope control,
+  design-change propagation, and single- or cross-document design review. Use
+  when creating, refining, documenting, auditing, or validating how a game
+  should work or feel.
 ---
 
 # Game Design Skill
@@ -23,17 +24,21 @@ when a claim needs stronger authority.
 2. Read `references/authoritative-sources.md` before presenting MDA,
    Self-Determination Theory, Bartle player types, competitive balance, or
    accessibility guidance as research-backed.
-3. Treat files named `references/upstream-*.md` as verbatim MIT-licensed source
+3. Read `references/ai-native-game-design.md` when runtime AI interprets player
+   expression, generates game content or rules, adjudicates outcomes, or
+   sustains a character or relationship. Treat it as a repository-authored
+   synthesis of practitioner evidence, not an industry standard.
+4. Treat files named `references/upstream-*.md` as verbatim MIT-licensed source
    records. Preserve their useful wording and procedures where they fit the
    user's task.
-4. Distinguish four kinds of content in substantial deliverables:
+5. Distinguish four kinds of content in substantial deliverables:
    - **Project fact**: directly supported by the user's files, data, or stated
      decisions.
-   - **Source-backed method**: derived from a named upstream or authoritative
-     source.
+   - **Source-backed method**: derived from a named upstream, authoritative,
+     or clearly labelled practitioner source.
    - **Design proposal**: an option recommended for this project, not a fact.
    - **Assumption or unknown**: something that requires confirmation or a test.
-5. Do not invent citations, empirical thresholds, market claims, player
+6. Do not invent citations, empirical thresholds, market claims, player
    psychology claims, engine capabilities, or balance values.
 
 ## Apply the compatibility contract
@@ -79,6 +84,7 @@ reference merely because it is available.
 | Propagate a design change | `upstream-workflow-propagate-design-change.md` | Read the previous and current design plus affected architecture/docs |
 | Plan or assess a prototype | `upstream-workflow-prototype.md`, `upstream-agent-prototyper.md` | `upstream-template-prototype-report.md` |
 | Capture or interpret a playtest | `upstream-workflow-playtest-report.md` | `upstream-template-prototype-report.md`, affected GDDs |
+| Design or review AI-native, runtime-generative, or intelligent-NPC gameplay | `ai-native-game-design.md`, `upstream-workflow-prototype.md`, `upstream-workflow-playtest-report.md` | `upstream-template-game-design-document.md`, affected GDDs, UX and accessibility sources |
 | Design or review game UX/HUD | `upstream-workflow-ux-design.md`, `upstream-workflow-ux-review.md`, `upstream-agent-ux-designer.md` | `upstream-template-ux-spec.md`, `upstream-template-hud-design.md`, `upstream-template-interaction-pattern-library.md` |
 | Review accessibility | `upstream-agent-accessibility-specialist.md` | `upstream-template-accessibility-requirements.md`, `authoritative-sources.md` |
 | Design a level or encounter | `upstream-agent-level-designer.md` | `upstream-template-level-design-document.md`, relevant system GDDs |
@@ -130,6 +136,12 @@ precise rules, states and transitions where applicable, system inputs and
 outputs, formulas with variables and ranges, edge-case resolutions, dependency
 direction, tuning knobs, feedback requirements, and acceptance criteria.
 
+For runtime-generative mechanics, also define the player-AI interface,
+interpretation and adjudication boundary, authoritative state owner,
+generation envelope, deterministic validation, persistence, player-visible
+feedback, failure and recovery behavior, safety constraints, and the evidence
+policy for player inputs.
+
 Keep design decisions separate from technical architecture decisions. Flag
 implementation questions for an ADR or engineering review instead of silently
 embedding a technology choice in the GDD.
@@ -177,6 +189,9 @@ stopping, and identify what remains untested.
   or deliberately asymmetric experiences.
 - Treat accessibility guidance as design and testing support, not as a legal
   compliance certification.
+- Treat the Tencent Game Institute AI-native taxonomy, prototype lessons, and
+  retention ideas as practitioner evidence. Do not present them as consensus
+  definitions, current model guarantees, or proven player effects.
 - Treat upstream numeric thresholds and universal-sounding rules as heuristics
   unless `authoritative-sources.md` supports the exact claim and scope.
 

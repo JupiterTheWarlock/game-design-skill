@@ -30,6 +30,22 @@
       "turn.completed": true,
       "does_not_infer_201_hp": true
     },
+    "codex_ai_native_review": {
+      "feature": true,
+      "removal": true,
+      "interface": true,
+      "authority": true,
+      "bounded": true,
+      "Curator": true,
+      "memory": true,
+      "privacy": true,
+      "retention": true,
+      "unsupported": true,
+      "narrow": true,
+      "ai-native-game-design.md": true,
+      "Sources Applied": true,
+      "turn.completed": true
+    },
     "dual_installation": {
       "commands_ok": true,
       "canonical_sha_matches_both_installs": true
@@ -45,12 +61,14 @@
     "codex_concept_and_pillars": true,
     "claude_system_gdd": true,
     "codex_cross_gdd_review": true,
+    "codex_ai_native_review": true,
     "dual_installation": true,
     "authored_links": true,
     "environment_restore": true
   },
   "environment_notes": [
     "Claude system-GDD succeeded after unrelated user MCP servers were isolated with an empty MCP fixture.",
-    "The final Codex cross-GDD turn emitted agent_message and turn.completed before the wrapper stopped a hanging user-MCP shutdown; raw stderr and timeout metadata are preserved."
+    "The final Codex cross-GDD turn emitted agent_message and turn.completed before the wrapper stopped a hanging user-MCP shutdown; raw stderr and timeout metadata are preserved.",
+    "The Codex AI-native review exercises the repository-authored practitioner synthesis through the installed Marketplace skill."
   ]
 }

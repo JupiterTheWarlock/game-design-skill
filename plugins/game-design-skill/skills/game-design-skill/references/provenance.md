@@ -9,7 +9,9 @@ Use sources in this order:
    `984023ddac0d5e27624f2baacde6105e45de375f`.
 3. Primary papers, original authors, official institutions, and current
    platform documentation listed in `authoritative-sources.md`.
-4. Clearly labelled design proposals or assumptions made for the current task.
+4. Clearly labelled practitioner evidence listed in
+   `authoritative-sources.md`.
+5. Clearly labelled design proposals or assumptions made for the current task.
 
 Do not let a general reference override a project-specific rule unless the
 user is explicitly revising that rule.
@@ -35,6 +37,19 @@ not represented as verbatim upstream text. Its adaptations are limited to:
 - selecting which complete upstream files to read for a task;
 - adding source-authority, licensing, and claim-safety rules;
 - allowing both Claude Code and Codex to use one canonical skill body.
+
+## Repository-authored synthesis
+
+`references/ai-native-game-design.md` is original repository guidance
+synthesized from the Tencent Game Institute panel listed under Practitioner
+evidence in `authoritative-sources.md`, combined with the skill's existing
+source-safety, prototyping, playtesting, UX, and system-design contracts.
+
+It is not a verbatim upstream record and is not part of
+`provenance/upstream-lock.json`. It does not vendor the Tencent article,
+images, or distinctive long-form wording. Treat the panel-derived taxonomy,
+reported lessons, and retention ideas as practitioner lenses or hypotheses
+unless stronger project evidence or a primary source supports the claim.
 
 ## Citation behavior
 

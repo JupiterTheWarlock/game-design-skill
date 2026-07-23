@@ -11,6 +11,23 @@ that every framework applies to every game.
   The repository is MIT-licensed. Exact copied files are enumerated and hashed
   in the Marketplace repository's `provenance/upstream-lock.json`.
 
+## Practitioner evidence
+
+- Tencent Game Institute, “AI原生游戏正在重新理解玩法丨初光EP.01全回顾.”
+  <https://gameinstitute.qq.com/news/detail/317>
+
+This edited panel recap features Lü Xin of the Communication University of
+China Digital Human Research Institute, Fang Ke of Tsinghua SIGS AgentLand,
+and independent AI-game creator Zang Tianpei. It reports practitioner
+taxonomies, prototype lessons, and hypotheses about AI-native gameplay,
+bounded input, runtime adjudication, character continuity, playtesting, and
+retention.
+
+Treat it as practitioner evidence, not as peer-reviewed research, an industry
+standard, or proof of market adoption and player-psychology claims. The
+repository-authored `ai-native-game-design.md` synthesizes its reusable design
+questions without copying the article or its images.
+
 ## Game-design frameworks named by the upstream source
 
 ### MDA

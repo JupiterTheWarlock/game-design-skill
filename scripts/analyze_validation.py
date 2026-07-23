@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Apply deterministic assertions to the three preserved real-CLI cases."""
+"""Apply deterministic assertions to the preserved real-CLI cases."""
 
 from __future__ import annotations
 
@@ -76,6 +76,27 @@ def main() -> int:
     cross_checks["turn.completed"] = cross_completed
     cross_checks["does_not_infer_201_hp"] = "201" not in cross
 
+    ai_native, ai_native_completed = codex_result("codex-ai-native-review")
+    ai_native_checks = require(
+        ai_native,
+        [
+            "feature",
+            "removal",
+            "interface",
+            "authority",
+            "bounded",
+            "Curator",
+            "memory",
+            "privacy",
+            "retention",
+            "unsupported",
+            "narrow",
+            "ai-native-game-design.md",
+            "Sources Applied",
+        ],
+    )
+    ai_native_checks["turn.completed"] = ai_native_completed
+
     install = json.loads((RESULTS / "install-evidence.json").read_text(encoding="utf-8"))
     install_checks = {
         "commands_ok": bool(install.get("commands_ok")),
@@ -88,6 +109,7 @@ def main() -> int:
         "codex_concept_and_pillars": concept_checks,
         "claude_system_gdd": system_checks,
         "codex_cross_gdd_review": cross_checks,
+        "codex_ai_native_review": ai_native_checks,
         "dual_installation": install_checks,
         "authored_links": {"link_check_ok": bool(links.get("ok"))},
         "environment_restore": {"restore_ok": bool(restore.get("ok"))},
@@ -100,6 +122,7 @@ def main() -> int:
         "environment_notes": [
             "Claude system-GDD succeeded after unrelated user MCP servers were isolated with an empty MCP fixture.",
             "The final Codex cross-GDD turn emitted agent_message and turn.completed before the wrapper stopped a hanging user-MCP shutdown; raw stderr and timeout metadata are preserved.",
+            "The Codex AI-native review exercises the repository-authored practitioner synthesis through the installed Marketplace skill.",
         ],
     }
     SUMMARY_PATH.write_text(json.dumps(summary, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")

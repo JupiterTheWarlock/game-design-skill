@@ -2,7 +2,7 @@
   "$schema": "https://json.schemastore.org/claude-code-plugin-marketplace.json",
   "name": "game-design-skill",
   "description": "Source-grounded game design guidance for Claude Code and Codex.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "owner": {
     "name": "JupiterTheWarlock"
   },
@@ -10,8 +10,8 @@
     {
       "name": "game-design-skill",
       "source": "./plugins/game-design-skill",
-      "description": "Guide game concepts, systems, GDDs, balance, prototypes, playtests, UX, and design reviews with traceable sources.",
-      "version": "0.1.0",
+      "description": "Guide game concepts, systems, AI-native gameplay, GDDs, balance, prototypes, playtests, UX, and design reviews with traceable sources.",
+      "version": "0.2.0",
       "author": {
         "name": "JupiterTheWarlock"
       },
@@ -21,6 +21,8 @@
         "game-design",
         "gdd",
         "systems-design",
+        "ai-native-gameplay",
+        "generative-ai",
         "balance",
         "prototyping",
         "playtesting",

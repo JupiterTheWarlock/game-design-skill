@@ -19,6 +19,7 @@ claude plugin validate plugins\game-design-skill --strict
 python scripts\run_validation_case.py codex concept-and-pillars
 python scripts\run_validation_case.py claude system-gdd
 python scripts\run_validation_case.py codex cross-gdd-review --timeout-seconds 420
+python scripts\run_validation_case.py codex ai-native-review --timeout-seconds 420
 python scripts\capture_install_evidence.py
 python scripts\restore_test_environment.py
 python scripts\analyze_validation.py

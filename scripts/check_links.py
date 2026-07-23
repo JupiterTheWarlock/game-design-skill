@@ -28,6 +28,13 @@ AUTHORED = [
     / "game-design-skill"
     / "references"
     / "provenance.md",
+    ROOT
+    / "plugins"
+    / "game-design-skill"
+    / "skills"
+    / "game-design-skill"
+    / "references"
+    / "ai-native-game-design.md",
     ROOT / "verification" / "README.md",
 ]
 

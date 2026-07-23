@@ -22,8 +22,9 @@ orchestration.
 
 The skill supports concept and pillar development, system decomposition,
 system GDD authoring, balance and economy analysis, prototypes and playtests,
-UX and accessibility work, scope control, design-change propagation, and
-single- or cross-document design review.
+UX and accessibility work, AI-native and runtime-generative gameplay, scope
+control, design-change propagation, and single- or cross-document design
+review.
 
 ## Repository contract
 
@@ -31,6 +32,8 @@ single- or cross-document design review.
 - Keep one canonical skill body at
   `plugins/game-design-skill/skills/game-design-skill/SKILL.md`.
 - Preserve exact upstream text in `references/upstream-*.md`.
+- Keep repository-authored synthesis separate from verbatim upstream records,
+  and label practitioner evidence independently from research authority.
 - Put compatibility behavior in the canonical `SKILL.md`, not in duplicated
   Claude- or Codex-specific skill bodies.
 - Cite authoritative supplements instead of inventing theory, thresholds, or
